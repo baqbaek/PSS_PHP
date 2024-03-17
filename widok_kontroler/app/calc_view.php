@@ -7,9 +7,9 @@
 </head>
 <body>
 
-<form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
+<form action="<?php print(_APP_URL);?>/app/calc.php" method="POST">
 	<label for="id_x">Liczba 1: </label>
-	<input id="id_x" type="text" name="x" value="<?php print($x); ?>" /><br />
+	<input id="id_x" type="text" name="x" value="<?php isset($x)?print($x): 'Wpisz liczbę'; ?>" /><br />
 	<label for="id_op">Operacja: </label>
 	<select name="op">
 		<option value="plus">+</option>
@@ -18,7 +18,7 @@
 		<option value="div">/</option>
 	</select><br />
 	<label for="id_y">Liczba 2: </label>
-	<input id="id_y" type="text" name="y" value="<?php print($y); ?>" /><br />
+	<input id="id_y" type="text" name="y" value="<?php isset($y)?print($y): 'Wpisz liczbę'; ?>" /><br />
 	<input type="submit" value="Oblicz" />
 </form>	
 
