@@ -7,27 +7,22 @@
 </head>
 <body>
 
-<form action="<?php print(_APP_URL);?>/app/calc.php" method="POST">
-	<label for="id_x">Liczba 1: </label>
-	<input id="id_x" type="text" name="x" value="<?php isset($x)?print($x): 'Wpisz liczbę'; ?>" /><br />
-	<label for="id_op">Operacja: </label>
-	<select name="op">
-		<option value="plus">+</option>
-		<option value="minus">-</option>
-		<option value="times">*</option>
-		<option value="div">/</option>
-	</select><br />
-	<label for="id_y">Liczba 2: </label>
-	<input id="id_y" type="text" name="y" value="<?php isset($y)?print($y): 'Wpisz liczbę'; ?>" /><br />
+<form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
+	<label for="id_x">Kwota (zł): </label>
+	<input id="id_x" type="text" name="kwota" value="<?php echo isset($kwota) ? $kwota : ''; ?>" /><br />
+	<label for="id_y">Na ile lat: </label>
+	<input id="id_y" type="text" name="lata" value="<?php echo isset($lata) ? $lata : ''; ?>" /><br />
+	<label for="id_z">Oprocentowanie (%): </label>
+	<input id="id_z" type="text" name="oprocentowanie" value="<?php echo isset($oprocentowanie) ? $oprocentowanie : ''; ?>" /><br />
 	<input type="submit" value="Oblicz" />
 </form>	
 
 <?php
-//wyświeltenie listy błędów, jeśli istnieją
+//wyświetlenie listy błędów, jeśli istnieją
 if (isset($messages)) {
-	if (count ( $messages ) > 0) {
+	if (count($messages) > 0) {
 		echo '<ol style="margin: 20px; padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #f88; width:300px;">';
-		foreach ( $messages as $key => $msg ) {
+		foreach ($messages as $key => $msg) {
 			echo '<li>'.$msg.'</li>';
 		}
 		echo '</ol>';
@@ -37,7 +32,7 @@ if (isset($messages)) {
 
 <?php if (isset($result)){ ?>
 <div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #ff0; width:300px;">
-<?php echo 'Wynik: '.$result; ?>
+<?php echo 'Miesięczna rata wynosi: '.$result.' zł'; ?>
 </div>
 <?php } ?>
 
